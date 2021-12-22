@@ -1,0 +1,44 @@
+<h3 class="text-center mt-3 mb-2">Show product</h3>
+
+<div class="table-responsive container-md">
+    <table style="width: 100%; border: 1px solid gainsboro;" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Product name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> price </th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="tax">
+            <th mat-header-cell *matHeaderCellDef> tax </th>
+            <td mat-cell *matCellDef="let element"> {{element.tax}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef> Total Amount </th>
+            <td mat-cell *matCellDef="let element"> {{element.price+(element.tax*element.price)/100 | currency:'INR'}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let i = index"><button class="btn-sm btn btn-primary mr-2" (click)="editProduct(i)">Edit</button><Button class="btn btn-sm btn-danger" (click)="deleteProduct(i)">Delete</Button> </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+    </table>
+</div>
+
+<div class="text-center m-3">
+    <a routerLink="/add" class="text-decoration-none" mat-raised-button color="primary">Add Product</a>
+</div>

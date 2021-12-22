@@ -1,0 +1,29 @@
+<h2 class="mt-3 mb-3 text-center">Edit Product</h2>
+
+<div class="container-md">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form  (ngSubmit)="submitForm()">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Product Name</mat-label>
+                    <input type="text" [(ngModel)]="data.name" name="name" matInput placeholder="Product Name"  required>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Product Name</mat-label>
+                    <input type="number" [(ngModel)]="data.price" name="price" matInput placeholder="Product Price" value="" required>
+                </mat-form-field>
+                
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Product Name</mat-label>
+                    <input type="number" [(ngModel)]="data.tax" name="tax" matInput placeholder="Product Tax" value="" required>
+                </mat-form-field>
+                Total Price - {{data.price+(data.tax*data.price)/100 | currency:"INR"}}
+
+                <div class="text-center mt-2">
+                    <button mat-raised-button color="primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
